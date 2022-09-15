@@ -1,0 +1,17 @@
+.contact {
+    display: flex;
+}
+
+.contactContainer {
+    flex: 6;
+
+}
+
+.contact_container {
+    /* display: flex; */
+    /* flex-direction: column; */
+    text-align: center;
+    align-items: center;
+    margin: 0 auto;
+    margin-left: 20px;
+}
