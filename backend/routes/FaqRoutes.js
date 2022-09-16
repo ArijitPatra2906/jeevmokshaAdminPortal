@@ -16,21 +16,21 @@ router.post("/", async (req, res) => {
 
 //Delete faq
 router.delete("/:id", async (req, res) => {
+    // try {
+    const faq = await Faq.findById(req.params.id);
+    // if (faq.username === req.body.username) {
     try {
-        const faq = await Faq.findById(req.params.id);
-        if (faq.username === req.body.username) {
-            try {
-                await faq.delete();
-                res.status(200).json("Faq has been deleted!");
-            } catch (err) {
-                res.status(500).json(err);
-            }
-        } else {
-            res.status(401).json("You can delete only your faq!");
-        }
+        await faq.delete();
+        res.status(200).json("Faq has been deleted!");
     } catch (err) {
         res.status(500).json(err);
     }
+    //     } else {
+    //         res.status(401).json("You can delete only your faq!");
+    //     }
+    // } catch (err) {
+    //     res.status(500).json(err);
+    // }
 });
 
 //Get all faq

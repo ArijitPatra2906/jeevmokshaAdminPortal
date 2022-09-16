@@ -19,6 +19,7 @@ function App() {
         <Route path="/courseinfo" element={<CourseView />} />
         <Route path='/contact' element={<ContactView />} />
         <Route path='/faq' element={<FaqView />} />
+        <Route path='/faq/:id' element={<FaqView />} />
       </Routes>
     </div>
   );

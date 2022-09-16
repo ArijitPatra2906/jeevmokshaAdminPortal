@@ -53,7 +53,7 @@ function Register() {
             };
 
             const { data } = await axios.post(
-                "http://localhost:7000/api/auth/register",
+                "/api/auth/register",
                 { username, email, password },
                 config
             );

@@ -69,7 +69,7 @@ function Course() {
 
     useEffect(() => {
         const getContact = async () => {
-            const result = await axios.get("http://localhost:7000/api/booking");
+            const result = await axios.get("/api/booking");
             setCourse(result.data)
             // console.log(course)
         };

@@ -45,7 +45,7 @@ function Contact() {
 
   useEffect(() => {
     const getContact = async () => {
-      const result = await axios.get("http://localhost:7000/api/contact");
+      const result = await axios.get("/api/contact");
       setContact(result.data)
       // console.log(contact)
     };
