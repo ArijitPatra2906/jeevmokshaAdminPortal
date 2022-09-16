@@ -1,32 +1,109 @@
-import React from 'react'
-import { useContext } from 'react';
-import { DarkModeContext } from '../../context/darkModeContext';
+import React, { useState } from 'react'
 import "./Navbar.css"
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import LanguageOutlinedIcon from "@mui/icons-material/LanguageOutlined";
-import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import FullscreenExitOutlinedIcon from "@mui/icons-material/FullscreenExitOutlined";
-import NotificationsNoneOutlinedIcon from "@mui/icons-material/NotificationsNoneOutlined";
-import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
-import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
+import MenuIcon from '@mui/icons-material/Menu';
+import CloseIcon from '@mui/icons-material/Close';
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import CreditCardIcon from "@mui/icons-material/CreditCard";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import QuizIcon from '@mui/icons-material/Quiz';
+import PostAddIcon from '@mui/icons-material/PostAdd';
+import ContactPageIcon from '@mui/icons-material/ContactPage';
+import { Link, useNavigate } from "react-router-dom"
+import logo from "../../assets/logo.png"
 
 function Navbar() {
-    // const { dispatch } = useContext(DarkModeContext);
+
+    const [isOpen, setIsOpen] = useState(false)
+    const [bar, setBar] = useState(true)
+    const [close, setClose] = useState(false)
+
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+        localStorage.removeItem("userInfo")
+        navigate("/")
+    };
+
     return (
         <div className='navbar'>
             <div className="navbar_wrapper">
                 <div className="header">
                     Admin dashboard for Jeevmoksha Yoga
                 </div>
-                {/* <div className="items">
-                    <div className="item">
-                        <img
-                            src="https://images.pexels.com/photos/941693/pexels-photo-941693.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-                            alt=""
-                            className="avatar"
-                        />
+                <div className="navlogo">
+                    <img src={logo} alt="" />
+                </div>
+            </div>
+            <div div className="Navbar" >
+                <div className={`nav-items ${isOpen && "open"}`}>
+                    <ul>
+                        <Link to="/dashboard" style={{ textDecoration: "none" }}>
+                            <li>
+                                <DashboardIcon className="icon" />
+                                <span>Dashboard</span>
+                            </li>
+                        </Link>
+                        <Link to="/contact" style={{ textDecoration: "none" }}>
+                            <li>
+                                <ContactPageIcon className="icon" />
+                                <span>Contact</span>
+                            </li>
+                        </Link>
+                        <Link to="/courseinfo" style={{ textDecoration: "none" }}>
+                            <li>
+                                <CreditCardIcon className="icon" />
+                                <span>Course Info</span>
+                            </li>
+                        </Link>
+                        <Link to="/blog" style={{ textDecoration: "none" }}>
+                            <li>
+                                <PostAddIcon className="icon" />
+                                <span>Blog</span>
+                            </li>
+                        </Link>
+                        <Link to="/faq" style={{ textDecoration: "none" }}>
+                            <li>
+                                <QuizIcon className="icon" />
+                                <span>Faq</span>
+                            </li>
+                        </Link>
+                        <p className="title">USER</p>
+                        <li>
+                            <AccountCircleOutlinedIcon className="icon" />
+                            <span>Profile</span>
+                        </li>
+                        <li onClick={handleLogout}>
+                            <ExitToAppIcon className="icon" />
+                            <span>Logout</span>
+                        </li>
+                    </ul>
+
+
+                </div>
+                <div
+                    className={`nav-toggle ${isOpen && "open"}`}
+                    onClick={() => setIsOpen(!isOpen)}
+                >
+                    <div className="menubar"
+                        onClick={() => {
+                            setBar(!bar)
+                            // setClose(true)
+                        }}>
+                        {bar && (
+                            <MenuIcon onClick={() => setClose(!close)} />
+                        )}
+                        {
+                            close && (
+                                <CloseIcon onClick={() => {
+                                    setClose(!close)
+                                    setBar(!bar)
+                                }}
+                                />
+                            )}
                     </div>
-                </div> */}
+                </div>
+
             </div>
         </div>
     )

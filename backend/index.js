@@ -7,6 +7,7 @@ const BlogRoutes = require("./routes/BlogRoutes")
 const BookingRoutes = require("./routes/BookingRoutes")
 const ContactRoutes = require("./routes/ContactRoutes")
 const AdminUserRoutes = require("./routes/AdminUserRoutes")
+const FaqRoutes = require("./routes/FaqRoutes");
 
 dotenv.config();
 app.use(express.json());
@@ -27,6 +28,7 @@ app.use("/api/auth", AdminUserRoutes);
 app.use("/api/blogs", BlogRoutes);
 app.use("/api/booking", BookingRoutes);
 app.use("/api/contact", ContactRoutes);
+app.use("/api/faq", FaqRoutes);
 
 
 app.get("/", function (req, res) {

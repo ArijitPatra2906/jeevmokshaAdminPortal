@@ -1,8 +1,12 @@
 .sidebar {
     flex: 1;
     border-right: 0.5px solid rgb(230, 227, 227);
-    min-height: 100vh;
+    height: 100vh;
     background-color: rgb(48, 47, 47);
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 99999;
 }
 
 .top {
@@ -18,12 +22,6 @@
     width: 180px;
     height: 40px;
 }
-
-/* 
-hr {
-    height: 0;
-    border: 0.5px solid rgb(230, 227, 227);
-} */
 
 .center {
     padding-left: 10px;
@@ -56,7 +54,7 @@ li:hover {
 
 .icon {
     font-size: 18px;
-    color: #7451f8;
+    color: #ffffff;
 }
 
 span {
@@ -91,4 +89,16 @@ span {
 
 .colorOption:nth-child(3) {
     background-color: darkblue;
+}
+
+@media screen and (max-width:1024px) {
+    .sidebar {
+        display: none;
+    }
+}
+
+@media screen and (max-width:700px) {
+    .sidebar {
+        display: none;
+    }
 }

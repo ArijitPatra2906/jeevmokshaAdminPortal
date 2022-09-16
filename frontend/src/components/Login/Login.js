@@ -1,38 +1,25 @@
 import React, { useState } from 'react'
-import {
-    Button,
-    FormControl,
-    FormLabel,
-    Input,
-    InputGroup,
-    InputRightElement,
-    useToast,
-    VStack,
-} from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { Box, Button, Grid, TextField, Typography } from '@mui/material'
+import "./Login.css"
 
 function Login() {
-    const [show, setShow] = useState(false);
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [picLoading, setPicLoading] = useState(false);
-    const toast = useToast();
     const navigate = useNavigate();
-
-    const handleClick = () => setShow(!show);
-
 
     const submitHandler = async () => {
         setPicLoading(true);
         if (!email || !password) {
-            toast({
-                title: "Please Fill all the fields",
-                status: "warning",
-                duration: 5000,
-                isClosable: true,
-                position: "bottom",
-            });
+            // toast({
+            //     title: "Please Fill all the fields",
+            //     status: "warning",
+            //     duration: 5000,
+            //     isClosable: true,
+            //     position: "bottom",
+            // });
             setPicLoading(false);
             return;
         }
@@ -47,82 +34,67 @@ function Login() {
                 { email, password },
                 config
             );
-            toast({
-                title: "Login Successful",
-                status: "success",
-                duration: 5000,
-                isClosable: true,
-                position: "top-right",
-            });
+            // toast({
+            //     title: "Login Successful",
+            //     status: "success",
+            //     duration: 5000,
+            //     isClosable: true,
+            //     position: "top-right",
+            // });
             localStorage.setItem("userInfo", JSON.stringify(data));
             setPicLoading(false);
             navigate("/dashboard");
         } catch (error) {
-            toast({
-                // title: "Error Occured!",
-                description: error.response.data.message,
-                status: "error",
-                duration: 5000,
-                isClosable: true,
-                position: "bottom",
-            });
+            // toast({
+            //     // title: "Error Occured!",
+            //     description: error.response.data.message,
+            //     status: "error",
+            //     duration: 5000,
+            //     isClosable: true,
+            //     position: "bottom",
+            // });
             setPicLoading(false);
         }
     };
 
 
     return (
-        <VStack spacing="1px">
-            <FormControl id="email" isRequired>
-                <FormLabel>Email</FormLabel>
-                <Input
-                    type="email"
-                    placeholder="Enter Your Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-            </FormControl>
-            <FormControl id="password" isRequired>
-                <FormLabel>Password</FormLabel>
-                <InputGroup>
-                    <Input
-                        type={show ? "text" : "password"}
-                        placeholder="Enter Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <InputRightElement width="4.5rem">
-                        <Button h="1.75rem" size="sm" variant="ghost" onClick={handleClick}>
-                            {/* {show ? <ViewOffIcon /> : <ViewIcon />} */}
+        <Box sx={{ flexGrow: 1 }}>
+            <Grid container spacing={3}>
+                <Grid className='blog_container' item xs={12}>
+                    <form>
+                        <br />
+                        <TextField
+                            required
+                            className='login_textfield'
+                            type="email"
+                            label="Enter Your Email"
+                            variant="outlined"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+
+                        />
+                        <br />
+                        <TextField
+                            required
+                            className='password'
+                            type="password"
+                            label="Enter You Password"
+                            variant="outlined"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <br />
+                        <Button className="loginBttn"
+                            isLoading={picLoading}
+                            onClick={submitHandler} variant="contained" color="primary">
+                            Login
                         </Button>
-                    </InputRightElement>
-                </InputGroup>
-            </FormControl>
-
-            <Button
-                colorScheme="blue"
-                width="100%"
-                style={{ marginTop: 15 }}
-                onClick={submitHandler}
-                isLoading={picLoading}
-            >
-                Login
-            </Button>
-
-            {/* <Button
-                variant="solid"
-                colorScheme="red"
-                width="100%"
-                style={{ marginTop: 15 }}
-                onClick={() => {
-                    setEmail("guest@example.com");
-                    setPassword("123456");
-                }}
-            // isLoading={picLoading}
-            >
-                Get Guest User Credentials
-            </Button> */}
-        </VStack>
+                        <Typography variant="h7" mt={2}>Don't have an account? <Link style={{ textDecoration: "none" }} to="/register">Sign Up</Link></Typography>
+                    </form>
+                </Grid>
+            </Grid>
+        </Box>
     )
 }
 

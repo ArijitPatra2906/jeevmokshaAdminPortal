@@ -1,21 +1,24 @@
-import { useContext } from 'react';
 import './App.css';
 import { Route, Routes } from "react-router-dom"
-import Home from "./pages/home/Home"
-import Blog from './pages/Blog/Blog';
-import Contact from './pages/Contact/Contact';
-import Course from './pages/Course/Course';
-import Dashboard from "./pages/Dashboard/Dashboard"
+import LoginView from './view/LoginView';
+import RegisterView from './view/RegisterView';
+import DashboardView from './view/DashboardView';
+import FaqView from './view/FaqView';
+import CourseView from './view/CourseView';
+import ContactView from './view/ContactView';
+import BlogView from './view/BlogView';
 
 function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path='/blog' element={<Blog />} />
-        <Route path="/courseinfo" element={<Course />} />
-        <Route path='/contact' element={<Contact />} />
+        <Route path='/' element={<LoginView />} />
+        <Route path='/register' element={<RegisterView />} />
+        <Route path="/dashboard" element={<DashboardView />} />
+        <Route path='/blog' element={<BlogView />} />
+        <Route path="/courseinfo" element={<CourseView />} />
+        <Route path='/contact' element={<ContactView />} />
+        <Route path='/faq' element={<FaqView />} />
       </Routes>
     </div>
   );
