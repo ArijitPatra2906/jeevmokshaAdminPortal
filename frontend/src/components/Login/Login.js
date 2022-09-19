@@ -90,7 +90,7 @@ function Login() {
                             onClick={submitHandler} variant="contained" color="primary">
                             Login
                         </Button>
-                        <Typography variant="h7" mt={2}>Don't have an account? <Link style={{ textDecoration: "none" }} to="/register">Sign Up</Link></Typography>
+                        {/* <Typography variant="h7" mt={2}>Don't have an account? <Link style={{ textDecoration: "none" }} to="/register">Sign Up</Link></Typography> */}
                     </form>
                 </Grid>
             </Grid>
