@@ -21,3 +21,66 @@ form {
         width: 350px;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+/* wefbwhfbwhfwhfwhfw */
+.write {
+    display: flex;
+    margin-left: 300px;
+    margin-top: 150px;
+}
+
+.icon-write {
+    margin-top: -50px;
+    /* margin-bottom: 20px; */
+    font-size: 20px;
+    border-radius: 50%;
+}
+
+.image {
+    height: 300px;
+    width: 300px;
+    margin-right: 40px;
+    margin-bottom: 20px;
+}
+
+input {
+    margin-bottom: 20px;
+    /* width: 400px; */
+}
+
+.writeText {
+    width: 400px;
+    height: 100px;
+}
+
+.submit {
+    height: 40px;
+    font-weight: 600;
+    color: #fff;
+    width: 120px;
+    margin-top: 30px;
+    background-color: teal;
+    border: none;
+    border-radius: 10px;
+}
+
+.submit:hover {
+    background-color: #c49c9c;
+    border: 1px solid teal;
+    color: black;
+    cursor: pointer;
+}
+
+.writeInput {
+    background-color: #fff;
+}

@@ -13,12 +13,8 @@ const BlogSchema = new mongoose.Schema({
     },
     photo: {
         type: String,
-        required: true,
-    },
-    username: {
-        type: String,
-        required: true,
-    },
+        required: false,
+    }
 }, { timestamps: true });
 
 const Blog = mongoose.model("Blog", BlogSchema)
