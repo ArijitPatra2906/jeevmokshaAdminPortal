@@ -43,17 +43,15 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
     try {
         const blog = await Blog.findById(req.params.id);
-        if (blog.username === req.body.username) {
-            try {
-                await blog.delete();
-                res.status(200).json("Blog has been deleted!");
-            } catch (err) {
-                res.status(500).json(err);
-            }
-        } else {
-            res.status(401).json("You can delete only your blog!");
+
+        try {
+            await blog.delete();
+            res.status(200).json("Blog has been deleted!");
+        } catch (err) {
+            res.status(500).json(err);
         }
-    } catch (err) {
+    }
+    catch (err) {
         res.status(500).json(err);
     }
 });

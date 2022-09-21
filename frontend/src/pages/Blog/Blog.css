@@ -10,6 +10,13 @@ form {
     margin: 5px;
 }
 
+.desctextfield {
+    width: 790px;
+    height: 100px;
+    margin: 5px;
+
+}
+
 @media screen and (max-width:1024px) {
     .textfield {
         width: 600px;

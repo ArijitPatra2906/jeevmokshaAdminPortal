@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react'
 import "./Blog.css"
 import AddIcon from '@mui/icons-material/Add';
-import { Button, TextField } from '@mui/material';
+import { Button, TextareaAutosize, TextField } from '@mui/material';
 
 function CreateBlog() {
 
@@ -76,17 +76,16 @@ function CreateBlog() {
                 <TextField
                     className='textfield'
                     type="text"
-                    label="blog title"
+                    label="Blog title"
                     variant="outlined"
                     onChange={(e) => setTitle(e.target.value)}
                 />
                 <br />
-                <TextField
-                    className='textfield'
-                    type="text"
-                    label="blog description"
-                    variant="outlined"
-                    onChange={(e) => setDesc(e.target.value)}
+                <TextareaAutosize
+                    className='desctextfield'
+                    aria-label="minimum height"
+                    minRows={6}
+                    placeholder="Blog description"
                 />
                 <br />
                 <Button onClick={handleSubmit} style={{ margin: "5px", width: "150px" }} variant="contained" color="primary">
