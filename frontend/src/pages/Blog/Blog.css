@@ -17,6 +17,66 @@ form {
 
 }
 
+.blog_top {
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    gap: 300px;
+}
+
+.blog_Sec_card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 30px;
+    justify-content: center;
+    align-items: center;
+    background: #e9e6e3;
+}
+
+.blog_details_scr2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 60px;
+}
+
+.blog_scr2_left img {
+    height: 390px;
+    width: 500px;
+}
+
+.blog_scr2_left {
+    margin-top: 100px;
+    height: 390px;
+    /* background-color: #906A47; */
+    width: 40%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    /* margin-left: -300px; */
+}
+
+.blog_scr2_right {
+    margin-top: 100px;
+    height: 390px;
+    width: 50%;
+    /* width: 100%; */
+    border: none;
+    margin-right: 50px;
+    background-color: #7c6f62;
+    border-radius: 10px;
+}
+
+.editbutton {
+    display: flex;
+    color: rgb(39, 24, 24);
+    justify-content: end;
+    align-items: flex-end;
+    margin-right: 50px;
+    gap: 10px;
+}
+
 @media screen and (max-width:1024px) {
     .textfield {
         width: 600px;
@@ -27,67 +87,4 @@ form {
     .textfield {
         width: 350px;
     }
-}
-
-
-
-
-
-
-
-
-
-
-
-/* wefbwhfbwhfwhfwhfw */
-.write {
-    display: flex;
-    margin-left: 300px;
-    margin-top: 150px;
-}
-
-.icon-write {
-    margin-top: -50px;
-    /* margin-bottom: 20px; */
-    font-size: 20px;
-    border-radius: 50%;
-}
-
-.image {
-    height: 300px;
-    width: 300px;
-    margin-right: 40px;
-    margin-bottom: 20px;
-}
-
-input {
-    margin-bottom: 20px;
-    /* width: 400px; */
-}
-
-.writeText {
-    width: 400px;
-    height: 100px;
-}
-
-.submit {
-    height: 40px;
-    font-weight: 600;
-    color: #fff;
-    width: 120px;
-    margin-top: 30px;
-    background-color: teal;
-    border: none;
-    border-radius: 10px;
-}
-
-.submit:hover {
-    background-color: #c49c9c;
-    border: 1px solid teal;
-    color: black;
-    cursor: pointer;
-}
-
-.writeInput {
-    background-color: #fff;
 }

@@ -43,7 +43,7 @@ function Sidebar() {
                     <Link to="/courseinfo" style={{ textDecoration: "none" }}>
                         <li>
                             <CreditCardIcon className="icon" />
-                            <span>Course Info</span>
+                            <span>Course Queries</span>
                         </li>
                     </Link>
                     <Link to="/blog" style={{ textDecoration: "none" }}>

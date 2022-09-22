@@ -3,7 +3,7 @@ const router = require("express").Router();
 const Blog = require("../models/BlogModel");
 
 
-//Create new post
+//Create new blog
 router.post("/", async (req, res) => {
     const newBlog = new Blog(req.body);
     try {
@@ -14,32 +14,28 @@ router.post("/", async (req, res) => {
     }
 });
 
-//Update post
+//Update blog
 router.put("/:id", async (req, res) => {
     try {
         const blog = await Blog.findById(req.params.id);
-        if (blog.username === req.body.username) {
-            try {
-                const updatedPost = await Blog.findByIdAndUpdate(
-                    req.params.id,
-                    {
-                        $set: req.body,
-                    },
-                    { new: true }
-                );
-                res.status(200).json("Updated blog!");
-            } catch (err) {
-                res.status(500).json(err);
-            }
-        } else {
-            res.status(401).json("You can update only your blog!");
+        try {
+            const updatedPost = await Blog.findByIdAndUpdate(
+                req.params.id,
+                {
+                    $set: req.body,
+                },
+                { new: true }
+            );
+            res.status(200).json("Updated blog!");
+        } catch (err) {
+            res.status(500).json(err);
         }
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
-//Delete post
+//Delete blog
 router.delete("/:id", async (req, res) => {
     try {
         const blog = await Blog.findById(req.params.id);
@@ -56,7 +52,7 @@ router.delete("/:id", async (req, res) => {
     }
 });
 
-// Get post
+// Get blog
 router.get("/:id", async (req, res) => {
     try {
         const blog = await Blog.findById(req.params.id);
@@ -67,7 +63,7 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-//Get all posts
+//Get all blogs
 router.get("/", async (req, res) => {
     try {
         const blogs = await Blog.find();

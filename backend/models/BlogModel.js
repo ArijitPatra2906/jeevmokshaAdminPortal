@@ -11,9 +11,8 @@ const BlogSchema = new mongoose.Schema({
         required: true,
         unique: true
     },
-    photo: {
+    pic: {
         type: String,
-        required: false,
     }
 }, { timestamps: true });
 

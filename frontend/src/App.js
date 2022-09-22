@@ -8,6 +8,7 @@ import ContactView from './view/ContactView';
 import BlogView from './view/BlogView';
 import CreateBlogView from './view/CreateBlogView';
 import BlogDetailsView from './view/BlogDetailsView';
+import FaqDetailsView from './view/FaqDetailsView';
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
         <Route path="/courseinfo" element={<CourseView />} />
         <Route path='/contact' element={<ContactView />} />
         <Route path='/faq' element={<FaqView />} />
-        {/* <Route path='/faq/:id' element={<FaqView />} /> */}
+        <Route path='/faq/:id' element={<FaqDetailsView />} />
       </Routes>
     </div>
   );

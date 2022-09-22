@@ -85,7 +85,7 @@ function Course() {
                             rows={course}
                             columns={columns}
                             getRowId={(row) => row.name + row.phone}
-                            pageSize={10}
+                            pageSize={6}
                             rowsPerPageOptions={[1]}
                             experimentalFeatures={{ newEditingApi: true }}
                         />

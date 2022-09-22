@@ -14,6 +14,27 @@ router.post("/", async (req, res) => {
     }
 });
 
+//Update faq
+router.put("/:id", async (req, res) => {
+    try {
+        const faq = await Faq.findById(req.params.id);
+        try {
+            const updatedFaq = await Faq.findByIdAndUpdate(
+                req.params.id,
+                {
+                    $set: req.body,
+                },
+                { new: true }
+            );
+            res.status(200).json("Updated faq!");
+        } catch (err) {
+            res.status(500).json(err);
+        }
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 //Delete faq
 router.delete("/:id", async (req, res) => {
     // try {
@@ -31,6 +52,18 @@ router.delete("/:id", async (req, res) => {
     // } catch (err) {
     //     res.status(500).json(err);
     // }
+});
+
+
+// Get faq
+router.get("/:id", async (req, res) => {
+    try {
+        const faq = await Faq.findById(req.params.id);
+
+        res.status(200).json(faq);
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 //Get all faq
