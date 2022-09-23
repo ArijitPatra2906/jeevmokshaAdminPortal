@@ -77,6 +77,44 @@ form {
     gap: 10px;
 }
 
+.blog_card_btn {
+    display: flex;
+    margin-top: 20px;
+    /* margin-left: 160px; */
+    /* bottom: 30px; */
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    align-items: center;
+    font-size: 14px;
+    padding: 0.5rem 1rem;
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    text-align: center;
+    align-items: center;
+    font-weight: 600;
+    font-family: "Open sans";
+
+}
+
+.blog_card_btn:hover {
+    background-color: white;
+    color: #906A47;
+    border: none;
+}
+
+.author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.author svg {
+    color: white;
+    font-size: 20px;
+}
+
 @media screen and (max-width:1024px) {
     .textfield {
         width: 600px;

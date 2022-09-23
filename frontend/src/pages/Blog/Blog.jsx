@@ -4,7 +4,7 @@ import { Box, Button, Card, CardActionArea, CardContent, CardMedia, getDialogTit
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
-
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 function Blog() {
     // const PF = "http://localhost:7000/images/";
 
@@ -37,34 +37,34 @@ function Blog() {
 
                             {blog && blog?.map((b) => (
                                 <Box className='blog1'>
-                                    <Link to={`/blog/${b._id}`} style={{ textDecoration: "none" }}>
 
-                                        <Card sx={{ maxWidth: 300, height: 500, bgcolor: "#906A47" }} >
-                                            <CardActionArea >
-                                                <CardMedia
-                                                    component="img"
-                                                    height="200"
-                                                    image={b.pic}
-                                                    alt="green iguana"
-                                                />
-                                                <CardContent >
-                                                    <Typography fontFamily="inter" gutterBottom variant="h7" fontSize="18px" fontWeight="600" lineHeight={1.5} color="white" textAlign="left" component="div">
-                                                        {b.title}
-                                                    </Typography>
-                                                    <div className="author">
-                                                        {/* <FiUser /> */}
-                                                        {/* <Typography fontSize="12px" color="black">by jeevmoksha | Jan 14, 2018 | Yoga</Typography> */}
-                                                    </div>
-                                                    <Typography mt={1.5} fontSize="12px" color="white" textAlign="left" letterSpacing={1} fontWeight="500" variant="body2">
-                                                        {b.desc}
-                                                    </Typography>
-                                                    {/* <button className='blog_card_btn'>
-                                                    Read More
-                                                </button> */}
-                                                </CardContent>
-                                            </CardActionArea>
-                                        </Card>
-                                    </Link>
+                                    <Card sx={{ maxWidth: 300, height: 630, bgcolor: "#906A47" }} >
+                                        <CardActionArea >
+                                            <CardMedia
+                                                component="img"
+                                                height="200"
+                                                image={b.pic}
+                                                alt="green iguana"
+                                            />
+                                            <CardContent >
+                                                <Typography fontFamily="inter" gutterBottom variant="h7" fontSize="18px" fontWeight="600" lineHeight={1.5} color="white" textAlign="left" component="div">
+                                                    {b.title}
+                                                </Typography>
+                                                <div className="author">
+                                                    <PersonOutlineIcon />
+                                                    <Typography fontSize="12px" color="white">{new Date(b.createdAt).toDateString()} | {new Date(b.createdAt).toLocaleTimeString()}</Typography>
+                                                </div>
+                                                <Typography mt={1.5} fontSize="12px" color="white" textAlign="left" letterSpacing={1} fontWeight="500" variant="body2">
+                                                    {b.desc}
+                                                </Typography>
+                                                <Link to={`/blog/${b._id}`} style={{ textDecoration: "none" }}>
+                                                    <button className='blog_card_btn'>
+                                                        Read More
+                                                    </button>
+                                                </Link>
+                                            </CardContent>
+                                        </CardActionArea>
+                                    </Card>
                                 </Box>
                             ))}
 
