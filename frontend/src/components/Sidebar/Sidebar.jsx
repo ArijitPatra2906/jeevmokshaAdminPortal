@@ -59,10 +59,10 @@ function Sidebar() {
                         </li>
                     </Link>
                     <p className="title">USER</p>
-                    <li>
+                    {/* <li>
                         <AccountCircleOutlinedIcon className="icon" />
                         <span>Profile</span>
-                    </li>
+                    </li> */}
                     <li onClick={handleLogout}>
                         <ExitToAppIcon className="icon" />
                         <span>Logout</span>

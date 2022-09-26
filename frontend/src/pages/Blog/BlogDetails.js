@@ -3,15 +3,17 @@ import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Typography, Box, Grid, Container, TextField, TextareaAutosize, Button } from '@mui/material';
-
-
+import { Typography, Box, Grid, TextField, TextareaAutosize } from '@mui/material';
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+import LoadingButton from '@mui/lab/LoadingButton';
 function BlogDetails() {
     const [blogDetails, setBlogDetails] = useState({});
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
     const [pic, setPic] = useState("");
     const [updateMode, setUpdatMode] = useState(false);
+    const [picLoading, setPicLoading] = useState(false)
 
 
     const location = useLocation();
@@ -36,6 +38,16 @@ function BlogDetails() {
         try {
             await axios.delete("/api/blogs/" + path);
             setUpdatMode(false);
+
+            toast.success('Blog deleted successfully!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             window.location.replace("/blog");
 
         } catch (err) { }
@@ -48,28 +60,37 @@ function BlogDetails() {
                 desc,
                 pic
             });
+            toast.success('Blog updated successfully!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             window.location.reload();
         } catch (err) { }
     };
     const postDetails = (pics) => {
-        // setPicLoading(true);
-        // if (pics === undefined) {
-        //     toast({
-        //         title: "Please Select an Image",
-        //         status: "warning",
-        //         duration: 5000,
-        //         isClosable: true,
-        //         position: "bottom",
-        //     });
-        //     return;
-        // }
+        setPicLoading(true);
+        if (pics === undefined) {
+            toast.warning('Please select an image!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
         // console.log(pics);
         if (
             pics.type === "image/jpeg" ||
             pics.type === "image/png" ||
             pics.type === "image/gif"
-            // pics.type === "image/jpg"
-            // cloudinary://153322855229737:SH7JbgUfHNoSbDqKMeNJiIAPsfM@ar1stin
         ) {
             const data = new FormData();
             data.append("file", pics);
@@ -83,21 +104,23 @@ function BlogDetails() {
                 .then((data) => {
                     setPic(data.url.toString());
                     console.log(data.url.toString());
-                    // setPicLoading(false);
+                    setPicLoading(false);
                 })
                 .catch((err) => {
                     console.log(err);
-                    // setPicLoading(false);
+                    setPicLoading(false);
                 });
         } else {
-            // toast({
-            //     title: "Please Select an Image",
-            //     status: "warning",
-            //     duration: 5000,
-            //     isClosable: true,
-            //     position: "bottom",
-            // });
-            // setPicLoading(false);
+            toast.warning('Please select an image!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            setPicLoading(false);
             return;
         }
     };
@@ -108,7 +131,7 @@ function BlogDetails() {
                 <Grid className='blog_details_screen2' item xs={12}>
                     <Box className='blog_details_scr2'>
                         {updateMode ? (
-                            <Box>
+                            <Box className="blogDetails">
                                 <form>
                                     <input type="file"
                                         // value={pic}
@@ -134,10 +157,12 @@ function BlogDetails() {
                                         onChange={(e) => setDesc(e.target.value)}
                                     />
                                     <br />
-                                    <Button onClick={handleUpdate} style={{ margin: "5px", width: "150px" }} variant="contained" color="primary">
+                                    <LoadingButton loading={picLoading} onClick={handleUpdate} style={{ margin: "5px", width: "150px" }} variant="contained" color="primary">
                                         Update
-                                    </Button>
+                                    </LoadingButton>
                                 </form>
+                                {pic && <img className="image" src={pic} alt="" />}
+
                             </Box>
                         ) : (
                             <Box className="blog_details_scr2">
@@ -166,6 +191,7 @@ function BlogDetails() {
                 </Grid>
 
             </Grid>
+            <ToastContainer />
         </Box>
     )
 }

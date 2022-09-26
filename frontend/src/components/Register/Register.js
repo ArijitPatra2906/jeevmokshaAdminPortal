@@ -11,9 +11,7 @@ function Register() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const [confirmPass, setConfirmPass] = useState(false);
-    // const [pic, setPic] = useState();
     const [picLoading, setPicLoading] = useState(false);
-    // const toast = useToast();
     const navigate = useNavigate();
 
 

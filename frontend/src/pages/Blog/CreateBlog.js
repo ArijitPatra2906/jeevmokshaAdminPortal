@@ -1,36 +1,38 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import "./Blog.css"
-import AddIcon from '@mui/icons-material/Add';
-import { Button, TextareaAutosize, TextField } from '@mui/material';
+import { TextareaAutosize, TextField } from '@mui/material';
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
+import LoadingButton from '@mui/lab/LoadingButton';
 
 function CreateBlog() {
 
     const [title, setTitle] = useState("");
     const [desc, setDesc] = useState("");
     const [pic, setPic] = useState();
-
+    const [picLoading, setPicLoading] = useState(false)
 
 
     const postDetails = (pics) => {
-        // setPicLoading(true);
-        // if (pics === undefined) {
-        //     toast({
-        //         title: "Please Select an Image",
-        //         status: "warning",
-        //         duration: 5000,
-        //         isClosable: true,
-        //         position: "bottom",
-        //     });
-        //     return;
-        // }
-        // console.log(pics);
+        setPicLoading(true);
+        if (pics === undefined) {
+            toast.warning('Please select an image!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            return;
+        }
+        console.log(pics);
         if (
             pics.type === "image/jpeg" ||
             pics.type === "image/png" ||
             pics.type === "image/gif"
-            // pics.type === "image/jpg"
-            // cloudinary://153322855229737:SH7JbgUfHNoSbDqKMeNJiIAPsfM@ar1stin
         ) {
             const data = new FormData();
             data.append("file", pics);
@@ -44,21 +46,23 @@ function CreateBlog() {
                 .then((data) => {
                     setPic(data.url.toString());
                     console.log(data.url.toString());
-                    // setPicLoading(false);
+                    setPicLoading(false);
                 })
                 .catch((err) => {
                     console.log(err);
-                    // setPicLoading(false);
+                    setPicLoading(false);
                 });
         } else {
-            // toast({
-            //     title: "Please Select an Image",
-            //     status: "warning",
-            //     duration: 5000,
-            //     isClosable: true,
-            //     position: "bottom",
-            // });
-            // setPicLoading(false);
+            toast.warning('Please select an image!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            setPicLoading(false);
             return;
         }
     };
@@ -67,36 +71,31 @@ function CreateBlog() {
 
     const handleSubmit = async (e) => {
         if (!title || !desc) {
-            // toast.warning('Please Fill all the required fields', {
-            //     position: "top-right",
-            //     autoClose: 3000,
-            //     hideProgressBar: false,
-            //     closeOnClick: true,
-            //     pauseOnHover: true,
-            //     draggable: true,
-            //     progress: undefined,
-            // })
-            alert("Please Fill all the required fields")
+            toast.warning('Please Fill all the required fields', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            })
             return;
         }
-        // const newBlog = {
-        //     // username: user.username,
-        //     title,
-        //     desc,
-        // };
-        // if (file) {
-        //     const data = new FormData();
-        //     const filename = Date.now() + file.name;
-        //     data.append("name", filename);
-        //     data.append("file", file);
-        //     newBlog.photo = filename;
+        if (!pic) {
+            toast.warning('Please select an image', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            })
+            return;
+        }
 
-        //     try {
-        //         await axios.post("/upload", data);
-        //     } catch (err) { }
-        // }
         try {
-
             const config = {
                 headers: {
                     "Content-Type": "application/json"
@@ -108,39 +107,35 @@ function CreateBlog() {
                 config
             );
             console.log(data);
-            alert("Blog created successfully")
-            // toast.success('Thanks For contact us!!', {
-            //     position: "top-middle",
-            //     autoClose: 5000,
-            //     hideProgressBar: false,
-            //     closeOnClick: true,
-            //     pauseOnHover: true,
-            //     draggable: true,
-            //     progress: undefined,
-            // })
+            toast.success('Blog created successfully!!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            })
             // navigate("/faq");
             window.location.replace("/blog")
 
 
         } catch (error) {
             console.log(error)
-            // toast.error('Something went wrong,try again!!', {
-            //     position: "top-right",
-            //     autoClose: 3000,
-            //     hideProgressBar: false,
-            //     closeOnClick: true,
-            //     pauseOnHover: true,
-            //     draggable: true,
-            //     progress: undefined,
-            // })
+            toast.error('Something went wrong,try again!!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            })
         }
     };
 
-
-
     return (
-        <div className="write">
-            {/* {pic && <img className="image" src={URL.createObjectURL(pic)} alt="" />} */}
+        <div className="blogDetails">
             <form>
                 <input type="file"
                     onChange={(e) => postDetails(e.target.files[0])}
@@ -158,16 +153,19 @@ function CreateBlog() {
                 <TextareaAutosize
                     className='desctextfield'
                     aria-label="minimum height"
-                    minRows={6}
+                    minRows={10}
                     placeholder="Blog description"
                     onChange={(e) => setDesc(e.target.value)}
 
                 />
                 <br />
-                <Button onClick={handleSubmit} style={{ margin: "5px", width: "150px" }} variant="contained" color="primary">
+                <LoadingButton loading={picLoading} onClick={handleSubmit} style={{ margin: "5px", width: "150px" }} variant="contained" color="primary">
                     Upload
-                </Button>
+                </LoadingButton>
             </form>
+            {pic && <img className="image" src={pic} alt="" />}
+
+            <ToastContainer />
         </div>
     )
 }

@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import "./Blog.css"
-import { Box, Button, Card, CardActionArea, CardContent, CardMedia, getDialogTitleUtilityClass, Grid, TextField, Typography } from '@mui/material'
+import { Box, Button, Card, CardActionArea, CardContent, CardMedia, Grid, Typography } from '@mui/material'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 function Blog() {
-    // const PF = "http://localhost:7000/images/";
 
     const [blog, setBlog] = useState([])
 
@@ -37,8 +36,7 @@ function Blog() {
 
                             {blog && blog?.map((b) => (
                                 <Box className='blog1'>
-
-                                    <Card sx={{ maxWidth: 300, height: 630, bgcolor: "#906A47" }} >
+                                    <Card sx={{ maxWidth: 300, height: 520, bgcolor: "#906A47" }} >
                                         <CardActionArea >
                                             <CardMedia
                                                 component="img"
@@ -67,9 +65,6 @@ function Blog() {
                                     </Card>
                                 </Box>
                             ))}
-
-
-
                         </Box>
                     </Grid>
 

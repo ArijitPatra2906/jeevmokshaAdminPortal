@@ -1,21 +1,19 @@
-import { Accordion, AccordionDetails, AccordionSummary, Box, Button, Modal, TextField, Typography } from '@mui/material';
+import { Accordion, AccordionDetails, AccordionSummary, Button, TextField } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
-// import FaqModal from './FaqModal';
-import CloseIcon from '@mui/icons-material/Close';
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 function FaqDetails() {
     const [faqDetails, setfaqDetails] = useState({});
     const [question, setQuestion] = useState("");
     const [answer, setAnswer] = useState("");
     const [updateMode, setUpdatMode] = useState(false);
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
+
 
     const [expanded, setExpanded] = useState(false);
 
@@ -43,8 +41,16 @@ function FaqDetails() {
         try {
             await axios.delete("/api/faq/" + path);
             setUpdatMode(false);
-            window.location.replace("/faq");
-
+            toast.success('Faq deleted successfully!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            window.location.replace("/faq")
         } catch (err) { }
     };
     const handleUpdate = async () => {
@@ -54,7 +60,16 @@ function FaqDetails() {
                 question,
                 answer,
             });
-            window.location.reload();
+            toast.success('Faq updated successfully!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            window.location.replace("/faq");
         } catch (err) { }
     };
 
@@ -114,6 +129,7 @@ function FaqDetails() {
                     </AccordionDetails>
                 </Accordion>
             )}
+            <ToastContainer />
         </>
     )
 }

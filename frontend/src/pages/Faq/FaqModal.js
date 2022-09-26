@@ -3,6 +3,8 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Box, Button, Modal, TextField } from '@mui/material';
 import "./Faq.css"
 import axios from 'axios';
+import { ToastContainer, toast } from "react-toastify"
+import "react-toastify/dist/ReactToastify.css"
 
 function FaqModal({ open, handleClose, }) {
     const [question, setQuestion] = useState("")
@@ -10,16 +12,16 @@ function FaqModal({ open, handleClose, }) {
 
     const create = async () => {
         if (!question || !answer) {
-            // toast.warning('Please Fill all the required fields', {
-            //     position: "top-right",
-            //     autoClose: 3000,
-            //     hideProgressBar: false,
-            //     closeOnClick: true,
-            //     pauseOnHover: true,
-            //     draggable: true,
-            //     progress: undefined,
-            // })
-            alert("Please Fill all the required fields")
+            toast.warning('Please Fill all the required fields', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            })
+            // alert("Please Fill all the required fields")
             return;
         }
         try {
@@ -35,31 +37,31 @@ function FaqModal({ open, handleClose, }) {
                 config
             );
             console.log(data);
-            alert("Faq created successfully")
-            // toast.success('Thanks For contact us!!', {
-            //     position: "top-middle",
-            //     autoClose: 5000,
-            //     hideProgressBar: false,
-            //     closeOnClick: true,
-            //     pauseOnHover: true,
-            //     draggable: true,
-            //     progress: undefined,
-            // })
+            // alert("Faq created successfully")
+            toast.success('Faq created successfully!', {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             // navigate("/faq");
             window.location.reload()
 
 
         } catch (error) {
             console.log(error)
-            // toast.error('Something went wrong,try again!!', {
-            //     position: "top-right",
-            //     autoClose: 3000,
-            //     hideProgressBar: false,
-            //     closeOnClick: true,
-            //     pauseOnHover: true,
-            //     draggable: true,
-            //     progress: undefined,
-            // })
+            toast.error('Something went wrong,try again!!', {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            })
         }
     }
     return (
@@ -100,7 +102,7 @@ function FaqModal({ open, handleClose, }) {
                     </form>
                 </Box>
             </Modal>
-            {/* <ToastContainer /> */}
+            <ToastContainer />
 
         </div>
     )
