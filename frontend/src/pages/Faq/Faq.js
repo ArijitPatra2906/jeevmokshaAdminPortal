@@ -41,8 +41,7 @@ function Faq() {
                     {faq && faq?.map((f) => (
                         <div style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
                             <Link to={`/faq/${f._id}`} style={{ textDecoration: "none" }}>
-                                <Accordion style={{ marginBottom: "20px", width: "600px", margin: "30px auto" }}
-                                    // onClick={() => alert(f._id)}
+                                <Accordion className='accordion'
                                     onChange={handleChange()}>
                                     <AccordionSummary
                                         expandIcon={<AddIcon />}

@@ -76,7 +76,7 @@ function FaqDetails() {
     return (
         <>
             {updateMode ? (
-                <form style={{ margin: "160px" }}>
+                <form className='faq_form'>
                     <h3 className='headline' style={{ textAlign: "center", color: "black", marginTop: "-40px" }}>Update Your FAQ</h3>
                     <TextField
                         required
@@ -103,7 +103,7 @@ function FaqDetails() {
                     </Button>
                 </form>
             ) : (
-                <Accordion style={{ marginTop: "100px", width: "600px", margin: "30px auto" }}
+                <Accordion className="accordion"
                     onChange={handleChange()}>
                     <AccordionSummary
                         expandIcon={<AddIcon />}
@@ -112,11 +112,11 @@ function FaqDetails() {
                     >
                         <h4 sx={{ color: 'text.secondary' }}>{question}</h4>
                     </AccordionSummary>
-                    <AccordionDetails style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }} >
+                    <AccordionDetails >
                         <h5>
                             {answer}
                         </h5>
-                        <div>
+                        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "flex-end" }}>
                             <DeleteIcon
                                 style={{ color: "red", cursor: "pointer" }}
                                 onClick={handleDelete} />

@@ -57,7 +57,7 @@ function Blog() {
                                                 </Typography>
                                                 <Link to={`/blog/${b._id}`} style={{ textDecoration: "none" }}>
                                                     <button className='blog_card_btn'>
-                                                        Read More
+                                                        Action
                                                     </button>
                                                 </Link>
                                             </CardContent>

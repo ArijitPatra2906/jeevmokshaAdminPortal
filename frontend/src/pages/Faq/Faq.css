@@ -66,6 +66,15 @@
     width: 400px
 }
 
+.accordion {
+    width: 600px;
+    margin: 30px auto;
+    margin-bottom: 20px;
+}
+
+.faq_form {
+    margin: 160px;
+}
 
 @media (max-width: 700px) {
     .faq_top {
@@ -74,6 +83,7 @@
         align-items: left;
         text-align: center;
         gap: 20px;
+        padding-left: 0px;
         padding-top: 20px;
     }
 
@@ -100,4 +110,16 @@
     .faq_textfield {
         width: 350px
     }
+
+    .accordion {
+        width: 350px;
+        margin: 30px auto;
+        margin-bottom: 20px;
+    }
+
+    .faq_form {
+        margin: 20px;
+        margin-top: 100px;
+    }
+
 }

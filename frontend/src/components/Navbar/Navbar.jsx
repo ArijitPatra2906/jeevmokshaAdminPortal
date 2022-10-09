@@ -53,7 +53,7 @@ function Navbar() {
                         <Link to="/courseinfo" style={{ textDecoration: "none" }}>
                             <li>
                                 <CreditCardIcon className="icon" />
-                                <span>Course Info</span>
+                                <span>Course Queries</span>
                             </li>
                         </Link>
                         <Link to="/blog" style={{ textDecoration: "none" }}>
@@ -69,10 +69,6 @@ function Navbar() {
                             </li>
                         </Link>
                         <p className="title">USER</p>
-                        <li>
-                            <AccountCircleOutlinedIcon className="icon" />
-                            <span>Profile</span>
-                        </li>
                         <li onClick={handleLogout}>
                             <ExitToAppIcon className="icon" />
                             <span>Logout</span>
