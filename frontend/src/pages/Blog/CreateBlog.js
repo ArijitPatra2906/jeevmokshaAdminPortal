@@ -31,8 +31,8 @@ function CreateBlog() {
         console.log(pics);
         if (
             pics.type === "image/jpeg" ||
-            pics.type === "image/png" ||
-            pics.type === "image/gif"
+            pics.type === "image/jpg" ||
+            pics.type === "image/png"
         ) {
             const data = new FormData();
             data.append("file", pics);
@@ -102,7 +102,7 @@ function CreateBlog() {
                 }
             };
             const { data } = await axios.post(
-                "http://localhost:7000/api/blogs",
+                "https://jeevmokshayogaadmin.herokuapp.com/api/blogs",
                 { title, desc, pic },
                 config
             );

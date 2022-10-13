@@ -26,7 +26,7 @@ function FaqDetails() {
     const path = location.pathname.split("/")[2];
     useEffect(() => {
         const getFaq = async () => {
-            const result = await axios.get("/api/faq/" + path);
+            const result = await axios.get("https://jeevmokshayogaadmin.herokuapp.com/api/faq/" + path);
 
             setfaqDetails(result.data);
             setQuestion(result.data.question);
@@ -39,7 +39,7 @@ function FaqDetails() {
 
     const handleDelete = async () => {
         try {
-            await axios.delete("/api/faq/" + path);
+            await axios.delete("https://jeevmokshaadmin.herokuapp.com/api/faq/" + path);
             setUpdatMode(false);
             toast.success('Faq deleted successfully!', {
                 position: "top-right",
@@ -55,7 +55,7 @@ function FaqDetails() {
     };
     const handleUpdate = async () => {
         try {
-            await axios.put("/api/faq/" + path, {
+            await axios.put("https://jeevmokshaadmin.herokuapp.com/api/faq/" + path, {
                 // username: user.username,
                 question,
                 answer,
@@ -103,7 +103,7 @@ function FaqDetails() {
                     </Button>
                 </form>
             ) : (
-                <Accordion className="accordion"
+                <Accordion
                     onChange={handleChange()}>
                     <AccordionSummary
                         expandIcon={<AddIcon />}

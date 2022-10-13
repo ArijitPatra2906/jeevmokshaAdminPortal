@@ -11,7 +11,7 @@ function Blog() {
 
     useEffect(() => {
         const getBlogs = async () => {
-            const result = await axios.get("/api/blogs");
+            const result = await axios.get("https://jeevmokshayogaadmin.herokuapp.com/api/blogs");
             setBlog(result.data)
             // console.log(blog)
         };
@@ -36,7 +36,7 @@ function Blog() {
 
                             {blog && blog?.map((b) => (
                                 <Box className='blog1'>
-                                    <Card sx={{ maxWidth: 300, height: 520, bgcolor: "#906A47" }} >
+                                    <Card sx={{ maxWidth: 300, height: 570, bgcolor: "#906A47" }} >
                                         <CardActionArea >
                                             <CardMedia
                                                 component="img"

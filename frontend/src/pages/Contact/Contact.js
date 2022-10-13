@@ -45,7 +45,7 @@ function Contact() {
 
   useEffect(() => {
     const getContact = async () => {
-      const result = await axios.get("/api/contact");
+      const result = await axios.get("https://jeevmokshayogaadmin.herokuapp.com/api/contact");
       setContact(result.data)
       // console.log(contact)
     };

@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { Box, Button, Grid, TextField, Typography } from '@mui/material'
 import "./Register.css"
+import { ToastContainer, toast } from "react-toastify"
 
 
 function Register() {
@@ -18,13 +19,15 @@ function Register() {
     const submitHandler = async () => {
         setPicLoading(true);
         if (!username || !email || !password || !confirmPass) {
-            // toast({
-            //     title: "Please Fill all the fields",
-            //     status: "warning",
-            //     duration: 5000,
-            //     isClosable: true,
-            //     position: "bottom",
-            // });
+            toast.warning("Please Fill all the fields", {
+                position: "bottom-middle",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             alert("Please Fill all the fields")
 
             setPicLoading(false);
@@ -51,31 +54,34 @@ function Register() {
             };
 
             const { data } = await axios.post(
-                "/api/auth/register",
+                "https://jeevmokshayogaadmin.herokuapp.com/api/auth/register",
                 { username, email, password },
                 config
             );
             console.log(data);
-            // toast({
-            //     title: "Registration is successful",
-            //     status: "success",
-            //     duration: 5000,
-            //     isClosable: true,
-            //     position: "bottom",
-            // });
-            alert("Registration successfull")
+            toast.success("Registration Successful", {
+                position: "bottom-middle",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
+            // alert("Registration successfull")
             localStorage.setItem("userInfo", JSON.stringify(data));
             setPicLoading(false);
             navigate("/dashboard");
         } catch (error) {
-            // toast({
-            //     title: "Error Occured",
-            //     description: error.response.data.message,
-            //     status: "error",
-            //     duration: 5000,
-            //     isClosable: true,
-            //     position: "bottom",
-            // });
+            toast.error(error.response.data.message, {
+                position: "bottom-middle",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             setPicLoading(false);
         }
     };
@@ -138,6 +144,7 @@ function Register() {
                     </form>
                 </Grid>
             </Grid>
+            <ToastContainer />
         </Box >
     )
 }

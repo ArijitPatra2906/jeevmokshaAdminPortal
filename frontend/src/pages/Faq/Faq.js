@@ -21,7 +21,7 @@ function Faq() {
 
     useEffect(() => {
         const getFaq = async () => {
-            const result = await axios.get("/api/faq");
+            const result = await axios.get("https://jeevmokshayogaadmin.herokuapp.com/api/faq");
             setFaq(result.data)
             // console.log(faq)
         };

@@ -69,7 +69,7 @@ function Course() {
 
     useEffect(() => {
         const getContact = async () => {
-            const result = await axios.get("/api/booking");
+            const result = await axios.get("https://jeevmokshayogaadmin.herokuapp.com/api/booking");
             setCourse(result.data)
             // console.log(course)
         };

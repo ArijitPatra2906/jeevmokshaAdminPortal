@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { Box, Button, Grid, TextField, Typography } from '@mui/material'
 import "./Login.css"
-
+import { ToastContainer, toast } from "react-toastify"
 function Login() {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
@@ -13,13 +13,15 @@ function Login() {
     const submitHandler = async () => {
         setPicLoading(true);
         if (!email || !password) {
-            // toast({
-            //     title: "Please Fill all the fields",
-            //     status: "warning",
-            //     duration: 5000,
-            //     isClosable: true,
-            //     position: "bottom",
-            // });
+            toast.warning("Please Fill all the fields", {
+                position: "bottom-middle",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             setPicLoading(false);
             return;
         }
@@ -30,29 +32,32 @@ function Login() {
                 },
             };
             const { data } = await axios.post(
-                "/api/auth/login",
+                "https://jeevmokshayogaadmin.herokuapp.com/api/auth/login",
                 { email, password },
                 config
             );
-            // toast({
-            //     title: "Login Successful",
-            //     status: "success",
-            //     duration: 5000,
-            //     isClosable: true,
-            //     position: "top-right",
-            // });
+            toast.success("Login Successful", {
+                position: "bottom-middle",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             localStorage.setItem("userInfo", JSON.stringify(data));
             setPicLoading(false);
             navigate("/dashboard");
         } catch (error) {
-            // toast({
-            //     // title: "Error Occured!",
-            //     description: error.response.data.message,
-            //     status: "error",
-            //     duration: 5000,
-            //     isClosable: true,
-            //     position: "bottom",
-            // });
+            toast.error(error.response.data.message, {
+                position: "bottom-middle",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
             setPicLoading(false);
         }
     };
@@ -88,12 +93,13 @@ function Login() {
                         <Button className="loginBttn"
                             isLoading={picLoading}
                             onClick={submitHandler} variant="contained" color="primary">
-                            Login
+                            {picLoading ? "Loading..." : "Login"}
                         </Button>
                         {/* <Typography variant="h7" mt={2}>Don't have an account? <Link style={{ textDecoration: "none" }} to="/register">Sign Up</Link></Typography> */}
                     </form>
                 </Grid>
             </Grid>
+            <ToastContainer />
         </Box>
     )
 }

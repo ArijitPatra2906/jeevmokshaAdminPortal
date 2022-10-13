@@ -2,7 +2,7 @@
   "name": "frontend",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:7000",
+  "proxy": "https://jeevmokshaadmin.herokuapp.com",
   "dependencies": {
     "@material-ui/core": "^4.12.4",
     "@mui/icons-material": "^5.10.3",
