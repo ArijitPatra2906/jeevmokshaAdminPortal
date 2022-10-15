@@ -45,8 +45,8 @@ function Contact() {
 
   useEffect(() => {
     const getContact = async () => {
-      const result = await axios.get("https://jeevmokshayogaadmin.herokuapp.com/api/contact");
-      setContact(result.data)
+      const result = await axios.get("https://jeevmokshayogaadminportal.herokuapp.com/api/contact");
+      setContact(result.data);
       // console.log(contact)
     };
     getContact()
@@ -55,7 +55,7 @@ function Contact() {
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={3}>
         <Grid className='contact_container' item xs={12}>
-          <Typography fontSize="26px" mt={4} pb={3} fontWeight="700" color="red">Contact List</Typography>
+          <Typography fontSize="26px" mt={4} pb={3} fontWeight="700">Contact List</Typography>
           <Box sx={{ height: 400, width: '90%', margin: "0 auto" }}>
             <DataGrid
               rows={contact}
@@ -65,6 +65,7 @@ function Contact() {
               rowsPerPageOptions={[10]}
               experimentalFeatures={{ newEditingApi: true }}
             />
+
           </Box>
         </Grid>
       </Grid>

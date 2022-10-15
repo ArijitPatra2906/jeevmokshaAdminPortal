@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
-import { Box, Button, Grid, TextField, Typography } from '@mui/material'
+import { Box, Button, Grid, TextField } from '@mui/material'
 import "./Login.css"
 import { ToastContainer, toast } from "react-toastify"
 function Login() {
@@ -26,15 +26,15 @@ function Login() {
             return;
         }
         try {
-            const config = {
-                headers: {
-                    "Content-type": "application/json",
-                },
-            };
+            // const config = {
+            //     headers: {
+            //         "Content-type": "application/json",
+            //     },
+            // };
             const { data } = await axios.post(
-                "https://jeevmokshayogaadmin.herokuapp.com/api/auth/login",
+                "https://jeevmokshayogaadminportal.herokuapp.com/api/auth/login",
                 { email, password },
-                config
+                // config
             );
             toast.success("Login Successful", {
                 position: "bottom-middle",
@@ -49,15 +49,16 @@ function Login() {
             setPicLoading(false);
             navigate("/dashboard");
         } catch (error) {
-            toast.error(error.response.data.message, {
-                position: "bottom-middle",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+            // toast.error(error.response.data.message, {
+            //     position: "bottom-middle",
+            //     autoClose: 5000,
+            //     hideProgressBar: false,
+            //     closeOnClick: true,
+            //     pauseOnHover: true,
+            //     draggable: true,
+            //     progress: undefined,
+            // });
+            console.log(error);
             setPicLoading(false);
         }
     };
@@ -95,7 +96,6 @@ function Login() {
                             onClick={submitHandler} variant="contained" color="primary">
                             {picLoading ? "Loading..." : "Login"}
                         </Button>
-                        {/* <Typography variant="h7" mt={2}>Don't have an account? <Link style={{ textDecoration: "none" }} to="/register">Sign Up</Link></Typography> */}
                     </form>
                 </Grid>
             </Grid>

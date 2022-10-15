@@ -102,7 +102,7 @@ function CreateBlog() {
                 }
             };
             const { data } = await axios.post(
-                "https://jeevmokshayogaadmin.herokuapp.com/api/blogs",
+                "https://jeevmokshayogaadminportal.herokuapp.com/api/blogs",
                 { title, desc, pic },
                 config
             );

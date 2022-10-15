@@ -11,7 +11,7 @@ function Blog() {
 
     useEffect(() => {
         const getBlogs = async () => {
-            const result = await axios.get("https://jeevmokshayogaadmin.herokuapp.com/api/blogs");
+            const result = await axios.get("https://jeevmokshayogaadminportal.herokuapp.com/api/blogs");
             setBlog(result.data)
             // console.log(blog)
         };
@@ -25,7 +25,7 @@ function Blog() {
                     <div className='blog_top'>
                         <Link to="/createBlog" style={{ textDecoration: "none" }}>
                             <Button className='btn_faq' variant="contained" endIcon={<AddIcon />}>
-                                Create
+                                Add new blog
                             </Button>
                         </Link>
                         <Typography fontSize="30px" mt={3} mb={3}>Curated Blogs</Typography>
@@ -36,7 +36,7 @@ function Blog() {
 
                             {blog && blog?.map((b) => (
                                 <Box className='blog1'>
-                                    <Card sx={{ maxWidth: 300, height: 570, bgcolor: "#906A47" }} >
+                                    <Card sx={{ maxWidth: 300, height: "fit-content", bgcolor: "#906A47" }} >
                                         <CardActionArea >
                                             <CardMedia
                                                 component="img"

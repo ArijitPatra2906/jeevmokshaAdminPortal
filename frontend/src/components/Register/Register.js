@@ -54,7 +54,7 @@ function Register() {
             };
 
             const { data } = await axios.post(
-                "https://jeevmokshayogaadmin.herokuapp.com/api/auth/register",
+                "https://jeevmokshayogaadminportal.herokuapp.com/api/auth/register",
                 { username, email, password },
                 config
             );

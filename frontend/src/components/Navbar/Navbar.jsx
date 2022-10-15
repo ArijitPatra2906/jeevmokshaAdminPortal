@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import "./Navbar.css"
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";

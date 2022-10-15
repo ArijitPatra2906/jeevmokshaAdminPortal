@@ -21,7 +21,7 @@ function BlogDetails() {
     const path = location.pathname.split("/")[2];
     useEffect(() => {
         const getBlog = async () => {
-            const result = await axios.get("https://jeevmokshayogaadmin.herokuapp.com/api/blogs/" + path);
+            const result = await axios.get("https://jeevmokshayogaadminportal.herokuapp.com/api/blogs/" + path);
 
             setBlogDetails(result.data);
             setDesc(result.data.desc);
@@ -36,7 +36,7 @@ function BlogDetails() {
 
     const handleDelete = async () => {
         try {
-            await axios.delete("https://jeevmokshayogaadmin.herokuapp.com/api/blogs/" + path);
+            await axios.delete("https://jeevmokshayogaadminportal.herokuapp.com/api/blogs/" + path);
             setUpdatMode(false);
 
             toast.success('Blog deleted successfully!', {
@@ -54,7 +54,7 @@ function BlogDetails() {
     };
     const handleUpdate = async () => {
         try {
-            await axios.put("https://jeevmokshayogaadmin.herokuapp.com/api/blogs/" + path, {
+            await axios.put("https://jeevmokshayogaadminportal.herokuapp.com/api/blogs/" + path, {
                 // username: user.username,
                 title,
                 desc,
@@ -177,10 +177,10 @@ function BlogDetails() {
                                         {desc}
                                     </Typography>
                                     <div className="editbutton">
-                                        <EditIcon
+                                        <EditIcon className='edit'
                                             onClick={() => setUpdatMode(true)}
                                         />
-                                        <DeleteIcon
+                                        <DeleteIcon className='delete'
                                             onClick={handleDelete}
                                         />
                                     </div>

@@ -32,7 +32,7 @@ function FaqModal({ open, handleClose, }) {
                 }
             };
             const { data } = await axios.post(
-                "https://jeevmokshayogaadmin.herokuapp.com/api/faq",
+                "https://jeevmokshayogaadminportal.herokuapp.com/api/faq",
                 { question, answer },
                 config
             );

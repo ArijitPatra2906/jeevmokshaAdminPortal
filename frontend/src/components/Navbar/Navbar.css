@@ -13,6 +13,7 @@
 
 span {
     color: white;
+    font-size: 18px;
 }
 
 .navbar_wrapper {
@@ -260,7 +261,21 @@ input {
 
     .open li {
         margin-top: 30px;
+        margin-left: 10px;
     }
+
+    .open li .icon {
+        font-size: 24px;
+    }
+
+    .open li span {
+        font-size: 20px;
+    }
+
+    .open .title {
+        font-size: 20px;
+    }
+
 
     .Navbar>.nav-items {
         position: absolute;

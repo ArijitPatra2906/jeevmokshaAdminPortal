@@ -21,12 +21,12 @@ function Faq() {
 
     useEffect(() => {
         const getFaq = async () => {
-            const result = await axios.get("https://jeevmokshayogaadmin.herokuapp.com/api/faq");
+            const result = await axios.get("https://jeevmokshayogaadminportal.herokuapp.com/api/faq");
             setFaq(result.data)
             // console.log(faq)
         };
         getFaq()
-    })
+    }, [])
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -34,7 +34,7 @@ function Faq() {
                 <Grid className='faq_container' item xs={12}>
                     <div className="faq_top">
                         <Button onClick={handleOpen} className='btn_faq' variant="contained" endIcon={<AddIcon />}>
-                            Create
+                            Add New Faq
                         </Button>
                         <Typography fontSize="30px" mt={3} mb={3}>Frequently asked question</Typography>
                     </div>

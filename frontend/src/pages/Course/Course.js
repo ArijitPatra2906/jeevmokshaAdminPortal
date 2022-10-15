@@ -69,7 +69,7 @@ function Course() {
 
     useEffect(() => {
         const getContact = async () => {
-            const result = await axios.get("https://jeevmokshayogaadmin.herokuapp.com/api/booking");
+            const result = await axios.get("https://jeevmokshayogaadminportal.herokuapp.com/api/booking");
             setCourse(result.data)
             // console.log(course)
         };
@@ -79,7 +79,7 @@ function Course() {
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={3}>
                 <Grid className='course_container' item xs={12}>
-                    <Typography color="red" fontSize="26px" mt={1} pb={3} fontWeight="700">Course Details</Typography>
+                    <Typography fontSize="26px" mt={1} pb={3} fontWeight="700">Course Details</Typography>
                     <Box sx={{ height: 500, width: '100%', margin: "0 auto" }}>
                         <DataGrid
                             rows={course}
