@@ -12,4 +12,15 @@ router.get("/", async (req, res) => {
     }
 });
 
+// Get total number
+router.get("/count", async (req, res) => {
+    try {
+        const totalBooking = await Course.countDocuments();
+
+        res.status(200).json(totalBooking);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 module.exports = router;

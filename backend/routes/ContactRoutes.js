@@ -11,5 +11,14 @@ router.get("/", async (req, res) => {
         res.status(500).json(err);
     }
 });
+// Get total number
+router.get("/count", async (req, res) => {
+    try {
+        const totalContacts = await Contact.countDocuments();
 
+        res.status(200).json(totalContacts);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 module.exports = router;

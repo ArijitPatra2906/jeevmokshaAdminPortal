@@ -14,6 +14,17 @@ router.post("/", async (req, res) => {
     }
 });
 
+// Get total number
+router.get("/count", async (req, res) => {
+    try {
+        const totalFaq = await Faq.countDocuments();
+
+        res.status(200).json(totalFaq);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 //Update faq
 router.put("/:id", async (req, res) => {
     try {

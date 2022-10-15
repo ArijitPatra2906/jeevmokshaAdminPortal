@@ -14,6 +14,17 @@ router.post("/", async (req, res) => {
     }
 });
 
+// Get total number
+router.get("/count", async (req, res) => {
+    try {
+        const totalBlog = await Blog.countDocuments();
+
+        res.status(200).json(totalBlog);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 //Update blog
 router.put("/:id", async (req, res) => {
     try {
