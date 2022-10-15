@@ -1,7 +1,7 @@
 import { Accordion, AccordionDetails, AccordionSummary, Button, TextField } from '@mui/material';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import AddIcon from '@mui/icons-material/Add';
@@ -14,6 +14,7 @@ function FaqDetails() {
     const [answer, setAnswer] = useState("");
     const [updateMode, setUpdatMode] = useState(false);
 
+    const navigate = useNavigate();
 
     const [expanded, setExpanded] = useState(false);
 
@@ -21,6 +22,10 @@ function FaqDetails() {
         setExpanded(isExpanded ? panel : false);
     };
 
+    useEffect(() => {
+        if (!localStorage.getItem("userInfo"))
+            navigate("/")
+    }, [navigate])
     const location = useLocation();
 
     const path = location.pathname.split("/")[2];

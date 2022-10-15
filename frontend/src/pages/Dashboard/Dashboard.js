@@ -3,7 +3,7 @@ import axios from 'axios';
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./Dashboard.css"
 
 function Dashboard() {
@@ -13,7 +13,12 @@ function Dashboard() {
     const [totalBlogs, setTotalBlogs] = useState("");
     const [totalFaq, setTotalFaq] = useState("");
     const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        if (!localStorage.getItem("userInfo"))
+            navigate("/")
+    }, [navigate])
     useEffect(() => {
         const getAllCardData = async () => {
             setLoading(true);

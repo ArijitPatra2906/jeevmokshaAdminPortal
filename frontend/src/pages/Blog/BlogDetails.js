@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Typography, Box, Grid, TextField, TextareaAutosize } from '@mui/material';
@@ -14,8 +14,11 @@ function BlogDetails() {
     const [pic, setPic] = useState("");
     const [updateMode, setUpdatMode] = useState(false);
     const [picLoading, setPicLoading] = useState(false)
-
-
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (!localStorage.getItem("userInfo"))
+            navigate("/")
+    }, [navigate])
     const location = useLocation();
 
     const path = location.pathname.split("/")[2];

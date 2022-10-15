@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import "./Course.css"
 import axios from "axios"
 import { DataGrid } from '@mui/x-data-grid';
-
+import { useNavigate } from 'react-router-dom';
 import { useEffect } from 'react'
 
 
@@ -66,7 +66,12 @@ const columns = [
 
 function Course() {
     const [course, setCourse] = useState([])
+    const navigate = useNavigate();
 
+    useEffect(() => {
+        if (!localStorage.getItem("userInfo"))
+            navigate("/")
+    }, [navigate])
     useEffect(() => {
         const getContact = async () => {
             const result = await axios.get("https://jeevmokshayogaadminportal.herokuapp.com/api/booking");

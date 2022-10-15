@@ -1,10 +1,11 @@
 import axios from 'axios';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Blog.css"
 import { TextareaAutosize, TextField } from '@mui/material';
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import LoadingButton from '@mui/lab/LoadingButton';
+import { useNavigate } from 'react-router-dom';
 
 function CreateBlog() {
 
@@ -12,8 +13,11 @@ function CreateBlog() {
     const [desc, setDesc] = useState("");
     const [pic, setPic] = useState();
     const [picLoading, setPicLoading] = useState(false)
-
-
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (!localStorage.getItem("userInfo"))
+            navigate("/")
+    }, [navigate])
     const postDetails = (pics) => {
         setPicLoading(true);
         if (pics === undefined) {

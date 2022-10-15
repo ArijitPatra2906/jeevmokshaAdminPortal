@@ -4,7 +4,7 @@ import "./Faq.css"
 import AddIcon from '@mui/icons-material/Add';
 import axios from 'axios';
 import FaqModal from './FaqModal';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Faq() {
     const [open, setOpen] = useState(false);
@@ -18,7 +18,11 @@ function Faq() {
         setExpanded(isExpanded ? panel : false);
     };
     const [faq, setFaq] = useState([])
-
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (!localStorage.getItem("userInfo"))
+            navigate("/")
+    }, [navigate])
     useEffect(() => {
         const getFaq = async () => {
             const result = await axios.get("https://jeevmokshayogaadminportal.herokuapp.com/api/faq");

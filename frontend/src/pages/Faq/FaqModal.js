@@ -1,15 +1,21 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CloseIcon from '@mui/icons-material/Close';
 import { Box, Button, Modal, TextField } from '@mui/material';
 import "./Faq.css"
 import axios from 'axios';
 import { ToastContainer, toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import { useNavigate } from 'react-router-dom';
 
 function FaqModal({ open, handleClose, }) {
     const [question, setQuestion] = useState("")
     const [answer, setAnswer] = useState("")
 
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (!localStorage.getItem("userInfo"))
+            navigate("/")
+    }, [navigate])
     const create = async () => {
         if (!question || !answer) {
             toast.warning('Please Fill all the required fields', {

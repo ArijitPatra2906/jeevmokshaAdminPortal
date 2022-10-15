@@ -2,13 +2,17 @@ import React, { useEffect, useState } from 'react'
 import "./Blog.css"
 import { Box, Button, Card, CardActionArea, CardContent, CardMedia, Grid, Typography } from '@mui/material'
 import axios from 'axios'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
 function Blog() {
 
     const [blog, setBlog] = useState([])
-
+    const navigate = useNavigate();
+    useEffect(() => {
+        if (!localStorage.getItem("userInfo"))
+            navigate("/")
+    }, [navigate])
     useEffect(() => {
         const getBlogs = async () => {
             const result = await axios.get("https://jeevmokshayogaadminportal.herokuapp.com/api/blogs");
