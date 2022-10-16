@@ -13,11 +13,15 @@ function CreateBlog() {
     const [desc, setDesc] = useState("");
     const [pic, setPic] = useState();
     const [picLoading, setPicLoading] = useState(false)
+
+
     const navigate = useNavigate();
+
     useEffect(() => {
         if (!localStorage.getItem("userInfo"))
             navigate("/")
     }, [navigate])
+
     const postDetails = (pics) => {
         setPicLoading(true);
         if (pics === undefined) {
@@ -100,6 +104,7 @@ function CreateBlog() {
         }
 
         try {
+            setPicLoading(true)
             const config = {
                 headers: {
                     "Content-Type": "application/json"
@@ -120,7 +125,7 @@ function CreateBlog() {
                 draggable: true,
                 progress: undefined,
             })
-            // navigate("/faq");
+            setPicLoading(false)
             window.location.replace("/blog")
 
 
@@ -147,6 +152,7 @@ function CreateBlog() {
                 />
                 <br />
                 <TextField
+                    required
                     className='textfield'
                     type="text"
                     label="Blog title"
@@ -155,6 +161,7 @@ function CreateBlog() {
                 />
                 <br />
                 <TextareaAutosize
+                    required
                     className='desctextfield'
                     aria-label="minimum height"
                     minRows={10}
